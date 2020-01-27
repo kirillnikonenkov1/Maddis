@@ -12,12 +12,13 @@ const distPath = path.join(__dirname, '/public');
 const config = {
   entry: {
     index: './src/js/index.js',
-    catalog: './src/js/catalog.js',
+    main: './src/js/main.js',
     cart: './src/js/cart.js'
   },
   output: {
     filename: '[name].js',
-    path: distPath
+    path: distPath,
+    publicPath:'/'
   },
   module: {
     rules: [{
@@ -85,7 +86,7 @@ const config = {
         return new HtmlWebpackPlugin({
           filename: path.basename(htmlFile),
           template: htmlFile,
-          chunks: ['index', htmlFile.slice(11, -5)],
+          chunks: ['main', htmlFile.slice(11, -5)],
         });
       }),
   ],
